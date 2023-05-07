@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dropdown } from "antd";
+import type { MenuProps } from "antd";
+import ProfileDelete from "../Profile Delete";
 import { data } from "../../../Mock Data/data";
 
-const items = [
+const items: MenuProps["items"] = [
   {
     label: "Edit Profile",
     key: "1",
@@ -14,6 +16,21 @@ const items = [
 ];
 
 export default function ListDisplay() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currId, setCurrId] = useState(0);
+
+  const onClick: MenuProps["onClick"] = ({ key }) => {
+    if (key === "2") {
+      setIsModalOpen(!isModalOpen);
+      //setCurrId();
+    }
+  };
+
+  const handleProfileDelete = (id: number) => {
+    console.log(id);
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <div className="row">
       <div className="col">
@@ -32,49 +49,62 @@ export default function ListDisplay() {
           <tbody>
             {data.map((item) => {
               return (
-                <tr className="mb-4" key={item.id}>
-                  <td>
-                    <div className="list-profile-details">
-                      <div className="profile">
-                        <img src={item.img} alt={item.name} />
+                <>
+                  <tr className="mb-4" key={item.id}>
+                    <td>
+                      <div className="list-profile-details">
+                        <div className="profile">
+                          <img src={item.img} alt={item.name} />
+                        </div>
+                        <div className="list-profile-name">{item.name}</div>
+                        {!item.verfied ? (
+                          <img
+                            className="verified-badge"
+                            src={process.env.PUBLIC_URL + "/verified.png"}
+                            alt="verified"
+                          />
+                        ) : null}
                       </div>
-                      <div className="list-profile-name">{item.name}</div>
-                      {!item.verfied ? (
-                        <img
-                          className="verified-badge"
-                          src={process.env.PUBLIC_URL + "/verified.png"}
-                          alt="verified"
-                        />
-                      ) : null}
-                    </div>
-                  </td>
-                  <td>
-                    <div className="list-profile-id">{item.id}</div>
-                  </td>
-                  <td>
-                    <div className="list-profile-email">{item.email}</div>
-                  </td>
-                  <td>
-                    <div className="list-profile-description">
-                      {item.description}
-                    </div>
-                  </td>
-                  <td style={{ textAlign: "right" }}>
-                    <Dropdown menu={{ items }}>
-                      <div
-                        className="list-profile-action"
-                        onClick={(e) => e.preventDefault()}
+                    </td>
+                    <td>
+                      <div className="list-profile-id">{item.id}</div>
+                    </td>
+                    <td>
+                      <div className="list-profile-email">{item.email}</div>
+                    </td>
+                    <td>
+                      <div className="list-profile-description">
+                        {item.description}
+                      </div>
+                    </td>
+                    <td style={{ textAlign: "right" }}>
+                      <Dropdown
+                        menu={{
+                          items,
+                          onClick,
+                        }}
                       >
-                        <i className="ri-more-2-fill"></i>
-                      </div>
-                    </Dropdown>
-                  </td>
-                </tr>
+                        <div
+                          className="list-profile-action"
+                          onClick={(e) => setCurrId(item.id)}
+                        >
+                          <i className="ri-more-2-fill"></i>
+                        </div>
+                      </Dropdown>
+                    </td>
+                  </tr>
+                </>
               );
             })}
           </tbody>
         </table>
       </div>
+      <ProfileDelete
+        id={currId}
+        isModalOpen={isModalOpen}
+        handleProfileDelete={handleProfileDelete}
+        setIsModalOpen={setIsModalOpen}
+      />
     </div>
   );
 }
