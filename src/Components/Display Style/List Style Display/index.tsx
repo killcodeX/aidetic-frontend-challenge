@@ -3,6 +3,7 @@ import { Dropdown } from "antd";
 import type { MenuProps } from "antd";
 import ProfileDelete from "../Profile Delete";
 import { data } from "../../../Mock Data/data";
+import EditProfile from "../../Edit Profile";
 
 const items: MenuProps["items"] = [
   {
@@ -17,12 +18,15 @@ const items: MenuProps["items"] = [
 
 export default function ListDisplay() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
   const [currId, setCurrId] = useState(0);
 
   const onClick: MenuProps["onClick"] = ({ key }) => {
+    if (key === "1") {
+      setEditModalOpen(!editModalOpen);
+    }
     if (key === "2") {
       setIsModalOpen(!isModalOpen);
-      //setCurrId();
     }
   };
 
@@ -115,6 +119,11 @@ export default function ListDisplay() {
         isModalOpen={isModalOpen}
         handleProfileDelete={handleProfileDelete}
         setIsModalOpen={setIsModalOpen}
+      />
+      <EditProfile
+        id={currId}
+        isModalOpen={editModalOpen}
+        setIsModalOpen={setEditModalOpen}
       />
     </div>
   );
