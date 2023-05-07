@@ -1,5 +1,5 @@
 import React from "react";
-import Search from "../../Search Profile";
+import Search from "../../Components/Search Profile";
 
 export default function Home() {
   return (
