@@ -14,7 +14,13 @@ export default function Theme() {
 
   return (
     <div className="theme-change">
-      <Switch checked={theme} onChange={() => setTheme(!theme)} />;
+      <span className={!theme ? "theme-active" : ""}>
+        <i className="ri-sun-line"></i>
+      </span>
+      <Switch checked={theme} onChange={() => setTheme(!theme)} />
+      <span className={theme ? "theme-active" : ""}>
+        <i className="ri-moon-line"></i>
+      </span>
     </div>
   );
 }
