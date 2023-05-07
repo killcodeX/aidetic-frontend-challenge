@@ -1,9 +1,9 @@
-import Theme from "./theme"
+import Theme from "./theme";
 
 export default function Header() {
   return (
     <header>
-      <nav>
+      <div className="container">
         <div className="left-nav-side">
           <div className="logo">
             <span className="main-logo">V</span>
@@ -13,7 +13,7 @@ export default function Header() {
         <div className="right-nav-side">
           <Theme />
         </div>
-      </nav>
+      </div>
     </header>
   );
 }
