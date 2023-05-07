@@ -7,7 +7,16 @@ export default function Header() {
     <header>
       <div className="left-nav-side">
         <div className="logo">
-          <span className="main-logo">V</span>
+          <span className="main-logo">
+            <img
+              src={
+                !theme
+                  ? process.env.PUBLIC_URL + "/black-logo.png"
+                  : process.env.PUBLIC_URL + "/white-logo.png"
+              }
+              alt="viral nation"
+            />
+          </span>
           <span className="rest-logo">iral Nation</span>
         </div>
       </div>
