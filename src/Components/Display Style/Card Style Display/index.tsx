@@ -1,5 +1,19 @@
 import React from "react";
+import { Dropdown } from "antd";
 import { data } from "../../../Mock Data/data";
+
+
+
+const items = [
+  {
+    label: "Edit Profile",
+    key: "1",
+  },
+  {
+    label: "Remove Profile",
+    key: "2",
+  },
+];
 
 export default function CardDisplay() {
   return (
@@ -25,9 +39,12 @@ export default function CardDisplay() {
                   </div>
                   <div className="profile-email">{item.email}</div>
                 </div>
+                <Dropdown menu={{ items }}>
                 <div className="profile-edit">
                   <i className="ri-more-2-fill"></i>
                 </div>
+                    </Dropdown>
+                
               </div>
               <div className="card-lower">{item.description}</div>
             </div>

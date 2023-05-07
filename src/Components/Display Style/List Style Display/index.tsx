@@ -1,5 +1,17 @@
 import React from "react";
+import { Dropdown } from "antd";
 import { data } from "../../../Mock Data/data";
+
+const items = [
+  {
+    label: "Edit Profile",
+    key: "1",
+  },
+  {
+    label: "Remove Profile",
+    key: "2",
+  },
+];
 
 export default function ListDisplay() {
   return (
@@ -48,9 +60,14 @@ export default function ListDisplay() {
                     </div>
                   </td>
                   <td style={{ textAlign: "right" }}>
-                    <div className="list-profile-action">
-                      <i className="ri-more-2-fill"></i>
-                    </div>
+                    <Dropdown menu={{ items }}>
+                      <div
+                        className="list-profile-action"
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <i className="ri-more-2-fill"></i>
+                      </div>
+                    </Dropdown>
                   </td>
                 </tr>
               );

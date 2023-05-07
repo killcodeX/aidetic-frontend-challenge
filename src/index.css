@@ -33,6 +33,10 @@ a {
   text-decoration: none;
 }
 
+ul.ant-dropdown-menu{
+  background-color: var(--layoutBG) !important;
+}
+
 /************************************* Common Components *************************************/
 /*~~~~~~~~~~ Header componenet ~~~~~~~~~~*/
 header {
