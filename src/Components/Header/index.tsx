@@ -1,6 +1,8 @@
+import React, { useState } from "react";
 import Theme from "./theme";
 
 export default function Header() {
+  const [theme, setTheme] = useState(false);
   return (
     <header>
       <div className="left-nav-side">
@@ -10,7 +12,7 @@ export default function Header() {
         </div>
       </div>
       <div className="right-nav-side">
-        <Theme />
+        <Theme theme={theme} setTheme={setTheme} />
       </div>
     </header>
   );

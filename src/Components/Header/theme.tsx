@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Switch } from "antd";
 
-export default function Theme() {
-  const [theme, setTheme] = useState(false);
+interface themeProps{
+  theme: boolean;
+  setTheme: (value: boolean) => void;
+}
 
+export default function Theme({theme, setTheme}:themeProps) {
   useEffect(() => {
     if (!theme) {
       document.documentElement.setAttribute("data-theme", "light");
