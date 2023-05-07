@@ -95,6 +95,7 @@ main {
   flex-direction: row;
   align-items: center;
   gap: 20px;
+  margin-bottom: 50px;
 }
 
 /*~~~~~~~~~~ Search componenet ~~~~~~~~~~*/
@@ -104,12 +105,13 @@ input {
   background: transparent;
   border: none;
   outline: 1px solid var(--borderLine);
-  width: 80%;
+  width: 77%;
 }
 
 .create-profile-btn {
   display:flex;
   gap:5px;
+  font-weight: 500;
   padding:7px 25px;
   border-radius:5px;
   outline:1px solid var(--borderLine);
@@ -128,6 +130,11 @@ input {
   display:flex;
   flex-direction: row;
 }
+
+.display-type:hover{
+  cursor: pointer;
+}
+
 .display-type span{
   display:flex;
   flex-direction: row;

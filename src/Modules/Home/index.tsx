@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { CardDisplay, ListDisplay } from "../../Components/Display Style";
 import Search from "../../Components/Search Profile";
 
 export default function Home() {
+  const [displayStyle, setDisplayStyle] = useState("card");
   return (
     <main>
       <div className="container">
@@ -9,12 +11,29 @@ export default function Home() {
           <Search />
           <div className="create-profile-btn" role="button">
             <i className="ri-user-add-fill"></i>
-            Search
+            Create Profile
           </div>
           <div className="display-type">
-          <span><i className="ri-align-justify"></i></span>
-            <span><i className="ri-list-check"></i></span>
+            <span onClick={() => setDisplayStyle("card")}>
+              <i
+                style={{
+                  color: displayStyle === "card" ? "#1677ff" : "inherit",
+                }}
+                className="ri-align-justify"
+              ></i>
+            </span>
+            <span onClick={() => setDisplayStyle("list")}>
+              <i
+                style={{
+                  color: displayStyle === "list" ? "#1677ff" : "inherit",
+                }}
+                className="ri-list-check"
+              ></i>
+            </span>
           </div>
+        </div>
+        <div className="display-type-component">
+          {displayStyle === "card" ? <CardDisplay /> : <ListDisplay />}
         </div>
       </div>
     </main>
