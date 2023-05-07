@@ -14,7 +14,15 @@ export default function Home() {
             Create Profile
           </div>
           <div className="display-type">
-            <span onClick={() => setDisplayStyle("card")}>
+            <span
+              style={{
+                backgroundColor:
+                  displayStyle === "card"
+                    ? "rgba(64, 118, 184, 0.15)"
+                    : "inherit",
+              }}
+              onClick={() => setDisplayStyle("card")}
+            >
               <i
                 style={{
                   color: displayStyle === "card" ? "#1677ff" : "inherit",
@@ -22,7 +30,15 @@ export default function Home() {
                 className="ri-align-justify"
               ></i>
             </span>
-            <span onClick={() => setDisplayStyle("list")}>
+            <span
+              style={{
+                backgroundColor:
+                  displayStyle === "list"
+                    ? "rgba(64, 118, 184, 0.15)"
+                    : "inherit",
+              }}
+              onClick={() => setDisplayStyle("list")}
+            >
               <i
                 style={{
                   color: displayStyle === "list" ? "#1677ff" : "inherit",
