@@ -1,15 +1,23 @@
 import React, { useState } from "react";
+import CreatProfile from "../../Components/Create Profile";
 import { CardDisplay, ListDisplay } from "../../Components/Display Style";
 import Search from "../../Components/Search Profile";
 
 export default function Home() {
   const [displayStyle, setDisplayStyle] = useState("card");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  
   return (
     <main>
       <div className="container">
         <div className="toolbar-component">
           <Search />
-          <div className="create-profile-btn" role="button">
+          <div
+            className="create-profile-btn"
+            role="button"
+            onClick={() => setIsModalOpen(!isModalOpen)}
+          >
             <i className="ri-user-add-fill"></i>
             Create Profile
           </div>
@@ -52,6 +60,10 @@ export default function Home() {
           {displayStyle === "card" ? <CardDisplay /> : <ListDisplay />}
         </div>
       </div>
+      <CreatProfile
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
     </main>
   );
 }
