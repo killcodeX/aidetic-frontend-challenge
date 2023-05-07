@@ -150,6 +150,20 @@ input {
   transform: rotate(90deg);
 }
 
+@media (max-width: 480px) {
+  .display-type {
+    display: none;
+  }
+  .toolbar-component {
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+  }
+
+  input {
+    width: 100%;
+  }
+}
+
 /*~~~~~~~~~~ Display-type ~~~~~~~~~~*/
 
 .card {
