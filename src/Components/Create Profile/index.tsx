@@ -28,6 +28,7 @@ export default function CreatProfile({
     };
 
     console.log(obj);
+    setIsModalOpen(!isModalOpen);
   };
   return (
     <Modal
