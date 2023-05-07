@@ -38,7 +38,14 @@ export default function ListDisplay() {
           <thead>
             <tr>
               <th style={{ width: "15%" }}>Name</th>
-              <th style={{ width: "10%" }}>ID</th>
+              <th
+                style={{
+                  width: "10%",
+                  paddingLeft: "30px",
+                }}
+              >
+                ID
+              </th>
               <th style={{ width: "15%" }}>Email</th>
               <th style={{ width: "50%" }}>Description</th>
               <th style={{ width: "10%", textAlign: "right" }}>
@@ -66,7 +73,11 @@ export default function ListDisplay() {
                         ) : null}
                       </div>
                     </td>
-                    <td>
+                    <td
+                      style={{
+                        paddingLeft: "30px",
+                      }}
+                    >
                       <div className="list-profile-id">{item.id}</div>
                     </td>
                     <td>
