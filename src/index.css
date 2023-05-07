@@ -6,6 +6,7 @@
   --backgroundBG: #f5f5f5;
   --fontColor: #212121;
   --borderLine: #757575;
+  --highlightTextColor: #2b2b2b;
 }
 
 /*~~~~~~~~~~ for dark theme ~~~~~~~~~~*/
@@ -14,6 +15,7 @@
   --backgroundBG: #1e1e1e;
   --fontColor: #ffffff;
   --borderLine: rgba(255, 255, 255, 0.1);
+  --highlightTextColor: rgba(255, 255, 255, 0.5);
 }
 
 * {
@@ -85,7 +87,6 @@ header {
 
 main {
   padding: 50px 0;
-  height: 50vw;
   background: var(--backgroundBG);
 }
 
@@ -93,6 +94,7 @@ main {
 .toolbar-component {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   gap: 20px;
   margin-bottom: 50px;
@@ -109,41 +111,156 @@ input {
 }
 
 .create-profile-btn {
-  display:flex;
-  gap:5px;
+  display: flex;
+  gap: 5px;
   font-weight: 400;
-  padding:7px 25px;
-  border-radius:5px;
-  outline:1px solid var(--borderLine);
+  padding: 7px 25px;
+  border-radius: 5px;
+  outline: 1px solid var(--borderLine);
 }
 
 .create-profile-btn:hover {
   color: #1677ff;
-  outline:1px solid #1677ff;
+  outline: 1px solid #1677ff;
 }
 
 .create-profile-btn:hover > i {
   color: #1677ff;
 }
 
-.display-type{
-  display:flex;
+.display-type {
+  display: flex;
   flex-direction: row;
 }
 
-.display-type:hover{
+.display-type:hover {
   cursor: pointer;
 }
 
-.display-type span{
-  display:flex;
+.display-type span {
+  display: flex;
   flex-direction: row;
-  gap:5px;
+  gap: 5px;
   font-size: 1.2rem;
-  padding:5px 15px;
-  outline:1px solid var(--borderLine);
+  padding: 5px 15px;
+  outline: 1px solid var(--borderLine);
 }
 
-.display-type span:first-child i{
+.display-type span:first-child i {
   transform: rotate(90deg);
+}
+
+/*~~~~~~~~~~ Display-type ~~~~~~~~~~*/
+
+.card {
+  padding: 24px;
+  background-color: var(--layoutBG);
+  border-radius: 8px;
+}
+
+.card-upper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.profile-name {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+.profile-email {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: var(--highlightTextColor);
+}
+
+.card-lower {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.4px;
+}
+
+/*~~~~~~~~~~ Display-type ~~~~~~~~~~*/
+
+table,
+th,
+td {
+  border-bottom: 1px solid var(--borderLine);
+  border-collapse: collapse;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+th {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: var(--highlightTextColor);
+}
+
+.list-display {
+  width: 100%;
+}
+
+.list-profile-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.list-profile-name {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.25px;
+}
+
+.list-profile-email,
+.list-profile-id {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.4px;
+}
+
+.list-profile-description {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.4px;
+}
+
+img.verified-badge {
+  width: 16px;
+  height: 16px;
 }
