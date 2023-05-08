@@ -5,6 +5,7 @@ import ProfileDelete from "../Profile Delete";
 import { data } from "../../../Mock Data/data";
 import EditProfile from "../../Edit Profile";
 import { StoreContext } from "../../../StateMangement";
+import { deleteUserApi } from "../../../API/api";
 
 const items: MenuProps["items"] = [
   {
@@ -33,7 +34,7 @@ export default function ListDisplay() {
   };
 
   const handleProfileDelete = (id: string) => {
-    console.log(id);
+    deleteUserApi({ deleteProfileId: id });
     setIsModalOpen(!isModalOpen);
   };
 
