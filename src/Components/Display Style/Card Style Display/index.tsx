@@ -36,6 +36,10 @@ export default function CardDisplay() {
     console.log(id);
     setIsModalOpen(!isModalOpen);
   };
+
+  if(state.profiles.length === 0){
+    return <>"Loading..."</>
+  }
   return (
     <div className="row">
       {state.profiles?.map((item) => {

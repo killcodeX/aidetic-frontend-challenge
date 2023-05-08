@@ -37,6 +37,10 @@ export default function ListDisplay() {
     setIsModalOpen(!isModalOpen);
   };
 
+  if(state.profiles.length === 0){
+    return <>"Loading..."</>
+  }
+
   return (
     <div className="row">
       <div className="col">
