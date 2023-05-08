@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Form, Input, Switch } from "antd";
 
 interface ModalProps {
-  id: number;
+  id: string;
   isModalOpen: boolean;
   setIsModalOpen: (value: boolean) => void;
 }

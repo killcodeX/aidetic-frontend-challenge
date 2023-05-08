@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import CreatProfile from "../../Components/Create Profile";
 import { CardDisplay, ListDisplay } from "../../Components/Display Style";
 import Search from "../../Components/Search Profile";
+import { StoreContext } from "../../Redux";
+import { fetchUser } from "../../Redux/action";
+import { fectchUserApi } from "../../API/api";
 
 export default function Home() {
   const [displayStyle, setDisplayStyle] = useState("card");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { dispatch } = useContext(StoreContext);
 
-  
+  useEffect(() =>{
+    async function fetch(){
+      let res = await fectchUserApi()
+      console.log('this is res -->', res?.data.data.getAllProfiles.profiles)
+      dispatch(fetchUser(res?.data.data.getAllProfiles.profiles))
+    }
+    fetch()
+  },[])
+
   return (
     <main>
       <div className="container">
@@ -60,10 +72,7 @@ export default function Home() {
           {displayStyle === "card" ? <CardDisplay /> : <ListDisplay />}
         </div>
       </div>
-      <CreatProfile
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-      />
+      <CreatProfile isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </main>
   );
 }

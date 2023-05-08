@@ -1,5 +1,5 @@
 import React, { useReducer} from 'react';
-import { StoreContext, StoreReducer, initialState  } from './State Management'
+import { StoreContext, StoreReducer, initialState  } from './Redux'
 import Header from './Components/Header';
 import Home from './Modules/Home';
 

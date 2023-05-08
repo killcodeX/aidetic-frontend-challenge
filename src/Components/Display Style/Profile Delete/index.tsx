@@ -2,10 +2,10 @@ import React from "react";
 import { Modal } from "antd";
 
 interface ModalProps {
-  id: number;
+  id: string;
   isModalOpen: boolean;
   setIsModalOpen: (value: boolean) => void;
-  handleProfileDelete: (value: number) => void;
+  handleProfileDelete: (value: string) => void;
 }
 
 export default function ProfileDelete({

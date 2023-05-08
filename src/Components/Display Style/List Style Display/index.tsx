@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Dropdown } from "antd";
 import type { MenuProps } from "antd";
 import ProfileDelete from "../Profile Delete";
 import { data } from "../../../Mock Data/data";
 import EditProfile from "../../Edit Profile";
+import { StoreContext } from "../../../Redux";
 
 const items: MenuProps["items"] = [
   {
@@ -19,7 +20,8 @@ const items: MenuProps["items"] = [
 export default function ListDisplay() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
-  const [currId, setCurrId] = useState(0);
+  const [currId, setCurrId] = useState("");
+  const { state } = useContext(StoreContext);
 
   const onClick: MenuProps["onClick"] = ({ key }) => {
     if (key === "1") {
@@ -30,7 +32,7 @@ export default function ListDisplay() {
     }
   };
 
-  const handleProfileDelete = (id: number) => {
+  const handleProfileDelete = (id: string) => {
     console.log(id);
     setIsModalOpen(!isModalOpen);
   };
@@ -58,17 +60,17 @@ export default function ListDisplay() {
             </tr>
           </thead>
           <tbody>
-            {data.map((item) => {
+            {state.profiles?.map((item) => {
               return (
                 <>
                   <tr className="mb-4" key={item.id}>
                     <td>
                       <div className="list-profile-details">
                         <div className="profile">
-                          <img src={item.img} alt={item.name} />
+                          <img src={item.image_url} alt={item.first_name + item.last_name} />
                         </div>
-                        <div className="list-profile-name">{item.name}</div>
-                        {!item.verfied ? (
+                        <div className="list-profile-name">{item.first_name + item.last_name}</div>
+                        {!item.is_verified ? (
                           <img
                             className="verified-badge"
                             src={process.env.PUBLIC_URL + "/verified.png"}

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Dropdown } from "antd";
 import type { MenuProps } from "antd";
 import { data } from "../../../Mock Data/data";
 import ProfileDelete from "../Profile Delete";
 import EditProfile from "../../Edit Profile";
+import { StoreContext } from "../../../Redux";
 
 const items: MenuProps["items"] = [
   {
@@ -19,7 +20,8 @@ const items: MenuProps["items"] = [
 export default function CardDisplay() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
-  const [currId, setCurrId] = useState(0);
+  const [currId, setCurrId] = useState('');
+  const { state } = useContext(StoreContext);
 
   const onClick: MenuProps["onClick"] = ({ key }) => {
     if (key === "1") {
@@ -30,24 +32,24 @@ export default function CardDisplay() {
     }
   };
 
-  const handleProfileDelete = (id: number) => {
+  const handleProfileDelete = (id: string) => {
     console.log(id);
     setIsModalOpen(!isModalOpen);
   };
   return (
     <div className="row">
-      {data.map((item) => {
+      {state.profiles?.map((item) => {
         return (
           <div key={item.id} className="col-sm-3 mb-5">
             <div className="card">
               <div className="card-upper">
                 <div className="profile">
-                  <img src={item.img} alt={item.name} />
+                  <img src={item.image_url} alt={item.first_name + item.last_name} />
                 </div>
                 <div className="profile-details">
                   <div className="d-flex flex-row align-items-center">
-                    <div className="profile-name px-1">{item.name}</div>
-                    {!item.verfied ? (
+                    <div className="profile-name px-1">{item.first_name + item.last_name}</div>
+                    {!item.is_verified ? (
                       <img
                         className="verified-badge"
                         src={process.env.PUBLIC_URL + "/verified.png"}
