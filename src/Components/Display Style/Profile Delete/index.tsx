@@ -1,4 +1,3 @@
-import React from "react";
 import { Modal } from "antd";
 
 interface ModalProps {
@@ -14,20 +13,32 @@ export default function ProfileDelete({
   setIsModalOpen,
   handleProfileDelete,
 }: ModalProps) {
+
   return (
-    <Modal open={isModalOpen} onCancel={() => setIsModalOpen(!isModalOpen)} footer={[]}>
+    <Modal
+      open={isModalOpen}
+      onCancel={() => setIsModalOpen(!isModalOpen)}
+      footer={[]}
+    >
       <div className="modal-header">
         <div className="modal-title">Remove Profile</div>
       </div>
       <div className="modal-body">
-          Removed profile will be deleted permenantly and won’t be available
-          anymore.
+        Removed profile will be deleted permenantly and won’t be available
+        anymore.
       </div>
       <div className="modal-footer">
-        <button className='profile-cancel' key="back" onClick={() => setIsModalOpen(!isModalOpen)}>
+        <button
+          className="profile-cancel"
+          key="back"
+          onClick={() => setIsModalOpen(!isModalOpen)}
+        >
           Cancel
         </button>
-        <button className='profile-delete' onClick={() => handleProfileDelete(id)}>
+        <button
+          className="profile-delete"
+          onClick={() => handleProfileDelete(id)}
+        >
           Delete
         </button>
       </div>

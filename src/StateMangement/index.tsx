@@ -47,6 +47,7 @@ export const StoreReducer = (state: storeProps, action: StoreAction) => {
       
     case "FETCH_UPDATED_DATA":
       let res = state.profiles.filter(item => item.id !== payload.id)
+      console.log(res,payload)
       return {
         ...state,
         updatedProfile: res[0],

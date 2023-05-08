@@ -78,3 +78,18 @@ export const updateUserApi = async (variables: any) => {
     console.error(error);
   }
 };
+
+export const deleteUserApi = async (variables: any) => {
+  let data = JSON.stringify({
+    query: `mutation DeleteProfile($deleteProfileId: String!) {
+    deleteProfile(id: $deleteProfileId)
+  }`,
+    variables: variables,
+  });
+  try {
+    let res = await API.post(baseUrl, data);
+    return res;
+  } catch (error) {
+    console.error(error);
+  }
+};

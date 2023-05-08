@@ -7,7 +7,7 @@ export const fetchUser = (data: any) => {
   };
 };
 
-export const fetchEditProfile = (id: any) => {
+export const fetchEditProfile = (id: string) => {
   return {
     type: "FETCH_UPDATED_DATA",
     payload: id,

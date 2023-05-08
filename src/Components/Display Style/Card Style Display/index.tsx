@@ -1,10 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Dropdown } from "antd";
 import type { MenuProps } from "antd";
-import { data } from "../../../Mock Data/data";
+//import { data } from "../../../Mock Data/data";
 import ProfileDelete from "../Profile Delete";
 import EditProfile from "../../Edit Profile";
 import { StoreContext } from "../../../StateMangement";
+import { deleteUserApi } from "../../../API/api";
 
 const items: MenuProps["items"] = [
   {
@@ -33,12 +34,12 @@ export default function CardDisplay() {
   };
 
   const handleProfileDelete = (id: string) => {
-    console.log(id);
+    deleteUserApi({ deleteProfileId: id });
     setIsModalOpen(!isModalOpen);
   };
 
-  if(state.profiles.length === 0){
-    return <>"Loading..."</>
+  if (state.profiles.length === 0) {
+    return <>"Loading..."</>;
   }
   return (
     <div className="row">

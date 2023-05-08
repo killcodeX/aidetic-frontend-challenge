@@ -16,7 +16,6 @@ export default function EditProfile({
   setIsModalOpen,
 }: ModalProps) {
   const { state, dispatch } = useContext(StoreContext);
-  console.log(state);
   const [imagelink, setImageLink] = useState(state.updatedProfile.image_url);
   const [firstName, setFirstName] = useState(state.updatedProfile.first_name);
   const [lastName, setLastName] = useState(state.updatedProfile.last_name);
