@@ -20,7 +20,7 @@ const items: MenuProps["items"] = [
 export default function CardDisplay() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
-  const [currId, setCurrId] = useState('');
+  const [currId, setCurrId] = useState("");
   const { state } = useContext(StoreContext);
 
   const onClick: MenuProps["onClick"] = ({ key }) => {
@@ -44,11 +44,16 @@ export default function CardDisplay() {
             <div className="card">
               <div className="card-upper">
                 <div className="profile">
-                  <img src={item.image_url} alt={item.first_name + item.last_name} />
+                  <img
+                    src={item.image_url}
+                    alt={item.first_name + item.last_name}
+                  />
                 </div>
                 <div className="profile-details">
                   <div className="d-flex flex-row align-items-center">
-                    <div className="profile-name px-1">{item.first_name + item.last_name}</div>
+                    <div className="profile-name px-1">
+                      {item.first_name + item.last_name}
+                    </div>
                     {!item.is_verified ? (
                       <img
                         className="verified-badge"
