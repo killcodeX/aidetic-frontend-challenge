@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 
-interface storeProps {
-  users: [];
+export interface storeProps {
+  users?: [];
 }
 
 // An interface for our actions
@@ -10,18 +10,24 @@ interface StoreAction {
   payload: any;
 }
 
-let initialState: storeProps = {
+export let initialState: storeProps = {
   users: [],
 };
 
-export const StoreContext = createContext(initialState);
+export const StoreContext = createContext<{
+  state: storeProps;
+  dispatch: React.Dispatch<StoreAction>;
+}>({
+  state: initialState,
+  dispatch: () => undefined,
+});
 
-const StoreReducer = (state: storeProps, action: StoreAction) => {
+export const StoreReducer = (state: storeProps, action: StoreAction) => {
   const { type, payload } = action;
 
   switch (type) {
     default:
-      throw new Error(`No case for type ${type} found in shopReducer.`);
+      return state;
   }
 };
 
