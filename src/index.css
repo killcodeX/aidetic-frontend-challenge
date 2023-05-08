@@ -177,6 +177,7 @@ input {
   padding: 24px;
   background-color: var(--layoutBG);
   border-radius: 8px;
+  min-height: 350px;
 }
 
 .card-upper {

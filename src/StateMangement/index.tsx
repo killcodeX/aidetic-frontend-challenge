@@ -44,16 +44,21 @@ export const StoreReducer = (state: storeProps, action: StoreAction) => {
         ...state,
         profiles: [...payload],
       };
-      
+
     case "FETCH_UPDATED_DATA":
-      let res = state.profiles.filter(item => item.id !== payload.id)
-      console.log(res,payload)
+      let res = state.profiles.filter((item) => item.id !== payload.id);
       return {
         ...state,
         updatedProfile: res[0],
       };
+    case "DELETE_DATA":
+      let profile = state.profiles.filter((item) => item.id !== payload.id);
+      return {
+        ...state,
+        profiles: [...profile],
+      };
     default:
-      throw new Error();
+      return state;
   }
 };
 

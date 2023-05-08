@@ -2,10 +2,11 @@ import React, { useState, useContext } from "react";
 import { Dropdown } from "antd";
 import type { MenuProps } from "antd";
 import ProfileDelete from "../Profile Delete";
-import { data } from "../../../Mock Data/data";
+//import { data } from "../../../Mock Data/data";
 import EditProfile from "../../Edit Profile";
 import { StoreContext } from "../../../StateMangement";
 import { deleteUserApi } from "../../../API/api";
+import { deleteProfile } from "../../../StateMangement/action"
 
 const items: MenuProps["items"] = [
   {
@@ -22,7 +23,7 @@ export default function ListDisplay() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [currId, setCurrId] = useState("");
-  const { state } = useContext(StoreContext);
+  const { state, dispatch } = useContext(StoreContext);
 
   const onClick: MenuProps["onClick"] = ({ key }) => {
     if (key === "1") {
@@ -35,6 +36,7 @@ export default function ListDisplay() {
 
   const handleProfileDelete = (id: string) => {
     deleteUserApi({ deleteProfileId: id });
+    dispatch(deleteProfile(id))
     setIsModalOpen(!isModalOpen);
   };
 

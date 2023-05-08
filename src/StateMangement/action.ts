@@ -13,3 +13,10 @@ export const fetchEditProfile = (id: string) => {
     payload: id,
   };
 };
+
+export const deleteProfile = (id: string) => {
+  return {
+    type: "DELETE_DATA",
+    payload: id,
+  };
+};
