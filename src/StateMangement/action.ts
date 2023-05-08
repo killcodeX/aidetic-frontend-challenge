@@ -6,3 +6,10 @@ export const fetchUser = (data: any) => {
     payload: data,
   };
 };
+
+export const fetchEditProfile = (id: any) => {
+  return {
+    type: "FETCH_UPDATED_DATA",
+    payload: id,
+  };
+};

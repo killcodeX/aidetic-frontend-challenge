@@ -1,5 +1,5 @@
-import { AxiosResponse } from "axios";
-import { createContext, useContext } from "react";
+import Item from "antd/es/list/Item";
+import { createContext } from "react";
 
 interface profileProps {
   id: string;
@@ -13,6 +13,7 @@ interface profileProps {
 
 export interface storeProps {
   profiles: profileProps[];
+  updatedProfile: profileProps;
 }
 
 // An interface for our actions
@@ -23,6 +24,7 @@ interface StoreAction {
 
 export let initialState: storeProps = {
   profiles: [],
+  updatedProfile: {} as profileProps,
 };
 
 export const StoreContext = createContext<{
@@ -39,10 +41,18 @@ export const StoreReducer = (state: storeProps, action: StoreAction) => {
   switch (type) {
     case "FETCH_DATA":
       return {
+        ...state,
         profiles: [...payload],
       };
+      
+    case "FETCH_UPDATED_DATA":
+      let res = state.profiles.filter(item => item.id !== payload.id)
+      return {
+        ...state,
+        updatedProfile: res[0],
+      };
     default:
-      return state;
+      throw new Error();
   }
 };
 

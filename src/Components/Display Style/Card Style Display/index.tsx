@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Dropdown } from "antd";
 import type { MenuProps } from "antd";
 import { data } from "../../../Mock Data/data";
 import ProfileDelete from "../Profile Delete";
 import EditProfile from "../../Edit Profile";
-import { StoreContext } from "../../../Redux";
+import { StoreContext } from "../../../StateMangement";
 
 const items: MenuProps["items"] = [
   {

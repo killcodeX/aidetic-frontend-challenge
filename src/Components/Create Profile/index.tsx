@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Form, Input, Switch } from "antd";
+import { CreateUserApi } from "../../API/api";
 
 interface ModalProps {
   isModalOpen: boolean;
@@ -19,15 +20,14 @@ export default function CreatProfile({
   const [form] = Form.useForm();
   const handleNewProfile = (event: React.FormEvent<EventTarget>) => {
     let obj = {
-      imagelink,
-      firstName,
-      lastName,
-      email,
-      description,
-      verified,
+      imageUrl: imagelink,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      description: description,
+      isVerified: verified,
     };
-
-    console.log(obj);
+    CreateUserApi(obj);
     setIsModalOpen(!isModalOpen);
   };
   return (

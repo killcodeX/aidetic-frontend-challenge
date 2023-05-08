@@ -4,7 +4,7 @@ import type { MenuProps } from "antd";
 import ProfileDelete from "../Profile Delete";
 import { data } from "../../../Mock Data/data";
 import EditProfile from "../../Edit Profile";
-import { StoreContext } from "../../../Redux";
+import { StoreContext } from "../../../StateMangement";
 
 const items: MenuProps["items"] = [
   {

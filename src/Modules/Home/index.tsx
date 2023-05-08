@@ -2,8 +2,8 @@ import React, { useState, useContext, useEffect } from "react";
 import CreatProfile from "../../Components/Create Profile";
 import { CardDisplay, ListDisplay } from "../../Components/Display Style";
 import Search from "../../Components/Search Profile";
-import { StoreContext } from "../../Redux";
-import { fetchUser } from "../../Redux/action";
+import { StoreContext } from "../../StateMangement";
+import { fetchUser } from "../../StateMangement/action";
 import { fectchUserApi } from "../../API/api";
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(() =>{
     async function fetch(){
       let res = await fectchUserApi()
-      console.log('this is res -->', res?.data.data.getAllProfiles.profiles)
+      //console.log('this is res -->', res?.data.data.getAllProfiles.profiles)
       dispatch(fetchUser(res?.data.data.getAllProfiles.profiles))
     }
     fetch()

@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Modal, Form, Input, Switch } from "antd";
+import { fetchEditProfile } from "../../StateMangement/action";
+import { StoreContext } from "../../StateMangement/index";
+import { updateUserApi } from "../../API/api";
 
 interface ModalProps {
   id: string;
@@ -12,26 +15,34 @@ export default function EditProfile({
   isModalOpen,
   setIsModalOpen,
 }: ModalProps) {
-  const [imagelink, setImageLink] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [description, setDescription] = useState("");
-  const [verified, setVerified] = useState(false);
+  const { state, dispatch } = useContext(StoreContext);
+  console.log(state);
+  const [imagelink, setImageLink] = useState(state.updatedProfile.image_url);
+  const [firstName, setFirstName] = useState(state.updatedProfile.first_name);
+  const [lastName, setLastName] = useState(state.updatedProfile.last_name);
+  const [email, setEmail] = useState(state.updatedProfile.email);
+  const [description, setDescription] = useState(state.updatedProfile.description);
+  const [verified, setVerified] = useState(state.updatedProfile.is_verified);
   const [form] = Form.useForm();
+
   const handleNewProfile = (event: React.FormEvent<EventTarget>) => {
     let obj = {
-      imagelink,
-      firstName,
-      lastName,
-      email,
-      description,
-      verified,
+      updateProfileId: id,
+      imageUrl: imagelink,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      description: description,
+      isVerified: verified,
     };
 
-    console.log(obj);
+    updateUserApi(obj);
     setIsModalOpen(!isModalOpen);
   };
+
+  useEffect(() => {
+    dispatch(fetchEditProfile(id));
+  }, []);
   return (
     <Modal
       open={isModalOpen}
@@ -41,6 +52,14 @@ export default function EditProfile({
     >
       <Form
         form={form}
+        initialValues={{
+          imageUrl: imagelink,
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          description: description,
+          isVerified: verified,
+        }}
         layout="vertical"
         onFinish={handleNewProfile}
         autoComplete="off"
